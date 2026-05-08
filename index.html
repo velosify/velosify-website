@@ -1195,7 +1195,13 @@
         </div>
         <div class="form-group">
           <label class="form-label" for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" class="form-input">
+          <input type="tel" id="phone" name="phone" class="form-input"
+                 inputmode="numeric"
+                 pattern="[0-9]{10}"
+                 minlength="10" maxlength="10"
+                 placeholder="5551234567"
+                 title="Enter a 10-digit phone number, numbers only (no spaces or dashes)"
+                 required>
         </div>
         <div class="form-group full-width">
           <label class="form-label" for="business">Business Name</label>
@@ -1282,6 +1288,16 @@
   const submitBtn = form.querySelector('.form-submit');
   const WEBHOOK_URL = 'https://crm.velosify.ai/webhook/website/contact';
 
+  // Phone field: strip non-digits as the user types so they can't enter
+  // letters or punctuation. Cap at 10 digits to match a US phone number.
+  const phoneInput = form.querySelector('#phone');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', () => {
+      const digits = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+      if (digits !== phoneInput.value) phoneInput.value = digits;
+    });
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const originalLabel = submitBtn.textContent;
@@ -1298,7 +1314,7 @@
       });
       if (!res.ok) throw new Error('HTTP ' + res.status);
       form.innerHTML =
-        '<div class="form-success" style="text-align:center;padding:2rem 1rem;">' +
+        '<div class="form-success" style="text-align:center;padding:2rem 1rem;grid-column:1 / -1;width:100%;">' +
           '<h3 style="margin:0 0 0.75rem;text-align:center;">Thanks, we got it.</h3>' +
           '<p style="margin:0;text-align:center;">We will follow up within one business day.</p>' +
         '</div>';
