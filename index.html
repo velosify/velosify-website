@@ -1299,8 +1299,8 @@
       if (!res.ok) throw new Error('HTTP ' + res.status);
       form.innerHTML =
         '<div class="form-success" style="text-align:center;padding:2rem 1rem;">' +
-          '<h3 style="margin:0 0 0.75rem;">Thanks — we got it.</h3>' +
-          '<p style="margin:0;">Nolan will follow up within 1 business day.</p>' +
+          '<h3 style="margin:0 0 0.75rem;text-align:center;">Thanks, we got it.</h3>' +
+          '<p style="margin:0;text-align:center;">We will follow up within one business day.</p>' +
         '</div>';
     } catch (err) {
       submitBtn.disabled = false;
