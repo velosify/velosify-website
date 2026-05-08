@@ -787,7 +787,20 @@
     @media (max-width: 480px) {
       .features-grid { grid-template-columns: 1fr; }
     }
+    /* Honeypot — visually hidden but kept in the accessibility tree off-screen.
+       Avoid display:none so bots that skip hidden inputs still fill it. */
+    .form-honeypot {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    /* Turnstile widget — small bottom margin so the submit button isn't glued to it. */
+    .cf-turnstile { margin: 0 0 16px; }
   </style>
+  <!-- Cloudflare Turnstile — invisible bot challenge for the contact form. -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -1237,6 +1250,24 @@
           <label class="form-label" for="challenge">Biggest Growth Challenge (optional)</label>
           <textarea id="challenge" name="challenge" class="form-textarea form-input" placeholder="Tell us what's holding your business back..."></textarea>
         </div>
+        <!-- Honeypot — hidden from real users, bots fill it. Server rejects
+             submissions where this is non-empty. tabindex/-1 + autocomplete
+             off so keyboard users skip past it. position:absolute keeps it
+             out of the layout without using display:none (which some bots
+             detect and skip). -->
+        <div class="form-honeypot" aria-hidden="true">
+          <label for="website_url_hp">Website URL (leave blank)</label>
+          <input type="text" id="website_url_hp" name="_hp"
+                 tabindex="-1" autocomplete="off" />
+        </div>
+
+        <!-- Cloudflare Turnstile — invisible bot challenge. Renders on load
+             and writes its token into a hidden input named cf-turnstile-response. -->
+        <div class="cf-turnstile"
+             data-sitekey="0x4AAAAADLlfD8sGy2uEYR7"
+             data-theme="dark"
+             data-size="flexible"></div>
+
         <button type="submit" class="form-submit">Send My Request</button>
         <p class="form-note">We'll get back to you within 1 business day. No spam, ever.</p>
       </form>
@@ -1305,6 +1336,14 @@
     submitBtn.textContent = 'Sending…';
 
     const payload = Object.fromEntries(new FormData(form).entries());
+
+    // Cloudflare Turnstile writes its token into a hidden field named
+    // "cf-turnstile-response". Forward it under a friendly key name so
+    // the server can validate it.
+    if (payload['cf-turnstile-response']) {
+      payload.turnstile_token = payload['cf-turnstile-response'];
+      delete payload['cf-turnstile-response'];
+    }
 
     try {
       const res = await fetch(WEBHOOK_URL, {
