@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Velosify — Your business gets smarter, scales faster, runs on autopilot. Graphics, Web Design, CRMs, Smart Calendars, Meta Ads, & AI Voice — all in one place.">
+  <meta name="color-scheme" content="light dark">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Velosify — AI-Powered Business Growth">
+  <meta property="og:description" content="Graphics, Web Design, CRMs, Smart Calendars, Meta Ads, & AI Voice — all in one place.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://velosify.ai/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Velosify — AI-Powered Business Growth">
+  <meta name="twitter:description" content="Graphics, Web Design, CRMs, Smart Calendars, Meta Ads, & AI Voice — all in one place.">
+  <meta name="twitter:image" content="https://velosify.ai/og-image.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%236366f1'/><stop offset='100%25' stop-color='%23a78bfa'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='%23050810'/><path d='M52 20L22 58h24l-4 22 30-38H48l4-22z' fill='url(%23g)'/></svg>" type="image/svg+xml">
+  <title>Velosify — AI-Powered Business Growth</title>
+
+  <!-- Fonts: Clash Display + Satoshi from Fontshare -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========== CSS VARIABLES ========== */
+    :root {
+      --bg-primary: #050810;
+      --bg-secondary: #0a0f1a;
+      --bg-card: #0d1220;
+      --bg-card-hover: #111827;
+      --text-primary: #e8eaf0;
+      --text-secondary: #8b92a5;
+      --text-muted: #5a6178;
+      --accent: #6366f1;
+      --accent-bright: #818cf8;
+      --accent-glow: rgba(99, 102, 241, 0.3);
+      --accent-gradient-start: #6366f1;
+      --accent-gradient-end: #a78bfa;
+      --border-color: rgba(99, 102, 241, 0.15);
+      --border-hover: rgba(99, 102, 241, 0.35);
+      --card-shadow: 0 0 30px rgba(99, 102, 241, 0.08);
+      --success: #10b981;
+      --font-display: 'Clash Display', sans-serif;
+      --font-body: 'Satoshi', sans-serif;
+    }
+
+    /* ========== RESET ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ========== BACKGROUND ========== */
+    .stars-canvas {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .nebula {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(167, 139, 250, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ========== CONTAINER ========== */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========== NAVIGATION ========== */
+    .nav-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(5, 8, 16, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent-gradient-end));
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.9; }
+
+    /* Hamburger button */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 110;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+      margin: 5px 0;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 99;
+      background: rgba(5, 8, 16, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 14px 24px;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu .nav-cta {
+      margin-top: 16px;
+      font-size: 1.1rem;
+      padding: 14px 40px;
+      border-radius: 12px;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      text-align: center;
+      padding: 80px 0 40px;
+    }
+    .hero-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      box-shadow: 0 0 60px var(--accent-glow);
+    }
+    .hero-icon svg {
+      width: 56px;
+      height: 56px;
+      stroke: white;
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .title-main {
+      background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tagline {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: var(--accent-bright);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .description {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-gradient-end));
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px var(--accent-glow);
+    }
+    .hero-cta svg {
+      width: 18px; height: 18px;
+    }
+
+    /* ========== INTEGRATIONS PILLS ========== */
+    .integrations-preview { padding: 40px 0 60px; }
+    .integrations-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .integration-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .integration-pill:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+    }
+    .integration-pill svg { flex-shrink: 0; }
+
+    /* ========== SECTION HEADERS ========== */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .claw-accent {
+      color: var(--accent-bright);
+      margin-right: 8px;
+      font-weight: 700;
+    }
+    .section-link {
+      color: var(--accent-bright);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .section-link:hover { opacity: 0.8; }
+
+    /* ========== FEATURES GRID ========== */
+    .features { padding: 60px 0; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .feature-card {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px 22px;
+      transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .feature-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow);
+    }
+    .feature-icon {
+      margin-bottom: 16px;
+    }
+    .feature-icon svg {
+      width: 32px;
+      height: 32px;
+    }
+    .feature-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent-bright);
+      background: rgba(99, 102, 241, 0.1);
+      padding: 3px 10px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .feature-desc {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials { padding: 60px 0; overflow: hidden; }
+    .testimonials-track {
+      overflow: hidden;
+      position: relative;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+    .testimonials-row {
+      display: flex;
+      gap: 16px;
+      animation: scroll-left var(--duration, 60s) linear infinite;
+      width: max-content;
+    }
+    .testimonials-row:hover { animation-play-state: paused; }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .testimonial-card {
+      flex-shrink: 0;
+      width: 340px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      gap: 14px;
+      transition: border-color 0.2s;
+    }
+    .testimonial-card:hover { border-color: var(--border-hover); }
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .testimonial-content { flex: 1; min-width: 0; }
+    .testimonial-quote {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+    .testimonial-author {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-bright);
+    }
+    .testimonial-role {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ========== PRICING ========== */
+    .pricing { padding: 60px 0; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, transform 0.2s;
+      position: relative;
+    }
+    .pricing-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+    .pricing-card.popular {
+      border-color: var(--accent);
+      box-shadow: 0 0 40px var(--accent-glow);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--accent), var(--accent-gradient-end));
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .pricing-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .pricing-price {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+    .pricing-period {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .pricing-features {
+      list-style: none;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+    .pricing-features li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pricing-features li::before {
+      content: '>';
+      color: var(--accent-bright);
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .pricing-btn {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      background: transparent;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .pricing-btn:hover {
+      border-color: var(--accent);
+      background: rgba(99, 102, 241, 0.05);
+    }
+    .pricing-card.popular .pricing-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-gradient-end));
+      color: #fff;
+      border-color: transparent;
+    }
+    .pricing-card.popular .pricing-btn:hover { opacity: 0.9; }
+    .pricing-note {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 20px;
+    }
+
+    /* ========== RESULTS / BUILDS ========== */
+    .builds-section { padding: 60px 0; }
+    .builds-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .build-card {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .build-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+    .build-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .build-source {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-bright);
+      background: rgba(99, 102, 241, 0.1);
+      padding: 3px 10px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .build-stat {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .build-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .build-summary {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ========== CTA GRID ========== */
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 40px 0;
+    }
+    .cta {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .cta:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+    .cta-icon {
+      width: 32px;
+      height: 32px;
+      margin: 0 auto 12px;
+    }
+    .cta-label {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .cta-sub {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ========== NEWSLETTER ========== */
+    .newsletter {
+      padding: 60px 0;
+      text-align: center;
+    }
+    .newsletter-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .newsletter-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .newsletter-input {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .newsletter-input:focus { border-color: var(--accent); }
+    .newsletter-input::placeholder { color: var(--text-muted); }
+    .newsletter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-gradient-end));
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: none;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .newsletter-btn:hover { opacity: 0.9; }
+    .newsletter-btn svg { width: 16px; height: 16px; }
+
+    /* ========== CONTACT FORM ========== */
+    .contact { padding: 60px 0; }
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .contact-form .full-width { grid-column: 1 / -1; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .form-input, .form-select, .form-textarea {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-select { appearance: none; cursor: pointer; }
+    .form-textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--accent), var(--accent-gradient-end));
+      color: #fff;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { opacity: 0.9; }
+    .form-note {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--border-color);
+      margin-top: 20px;
+    }
+    .footer-nav {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .footer-nav a {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--text-primary); }
+    .footer-separator { color: var(--text-muted); }
+    .footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .footer a { color: var(--accent-bright); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .builds-grid { grid-template-columns: 1fr; }
+      .contact-form { grid-template-columns: 1fr; }
+      .contact-form .full-width { grid-column: 1; }
+    }
+    @media (max-width: 480px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas class="stars-canvas" id="stars-canvas"></canvas>
+<div class="nebula"></div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('stars-canvas');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  const COUNT = 120;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function init() {
+    resize();
+    stars = [];
+    for (let i = 0; i < COUNT; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 0.08 + Math.random() * 0.25;
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: 0.5 + Math.random() * 1.2,
+        alpha: 0.2 + Math.random() * 0.6,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        twinkleSpeed: 0.003 + Math.random() * 0.008,
+        twinkleOffset: Math.random() * Math.PI * 2,
+      });
+    }
+  }
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    t++;
+    for (const s of stars) {
+      s.x += s.vx;
+      s.y += s.vy;
+      if (s.x < -5) s.x = canvas.width + 5;
+      if (s.x > canvas.width + 5) s.x = -5;
+      if (s.y < -5) s.y = canvas.height + 5;
+      if (s.y > canvas.height + 5) s.y = -5;
+      const flicker = s.alpha + Math.sin(t * s.twinkleSpeed + s.twinkleOffset) * 0.2;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${Math.max(0.05, Math.min(1, flicker))})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  draw();
+})();
+</script>
+
+<!-- NAVIGATION -->
+<div class="nav-wrapper">
+  <nav class="nav">
+    <a href="#" class="nav-logo">Velosify</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://crm.velosify.ai/login" target="_blank" rel="noopener">Log in</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#results" class="mobile-link">Results</a>
+  <a href="#pricing" class="mobile-link">Pricing</a>
+  <a href="https://crm.velosify.ai/login" target="_blank" rel="noopener" class="mobile-link">Log in</a>
+  <a href="#contact" class="nav-cta mobile-link">Get Started</a>
+</div>
+
+<main class="container" style="padding-top: 64px;">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="white" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h1 class="title">
+      <span class="title-main">Velosify</span>
+    </h1>
+    <p class="tagline">Your business on autopilot.</p>
+    <p class="description">
+      Your business gets smarter, scales faster, and runs on autopilot.<br>
+      Graphics, Web Design, CRMs, Smart Calendars, Meta Ads, &amp; AI Voice &mdash; all in one place.
+    </p>
+    <a href="#contact" class="hero-cta">
+      Get Started
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </header>
+
+  <!-- INTEGRATIONS -->
+  <section class="integrations-preview">
+    <div class="integrations-row">
+      <span class="integration-pill">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="#4285F4" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        <span>Google</span>
+      </span>
+      <span class="integration-pill">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="#1877F2" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <span>Meta</span>
+      </span>
+      <span class="integration-pill">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="#00A1E0" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.18 1.897-.962 6.502-1.36 8.627-.168.9-.5 1.2-.82 1.23-.697.064-1.226-.461-1.9-.903-1.056-.692-1.653-1.123-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        <span>Salesforce</span>
+      </span>
+      <span class="integration-pill">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="#FF7A59" xmlns="http://www.w3.org/2000/svg"><path d="M18.164 7.93a3.246 3.246 0 0 0-2.253-.93c-.473 0-.93.107-1.347.3V5.078a2.26 2.26 0 0 0-.93-1.825 2.282 2.282 0 0 0-2.063-.322 2.268 2.268 0 0 0-1.59 2.147v6.378c-.794-.67-1.86-.98-2.924-.768a3.244 3.244 0 0 0-2.52 3.798 3.248 3.248 0 0 0 3.21 2.698c.196 0 .393-.018.589-.054l3.645-.66v.852a2.268 2.268 0 0 0 2.268 2.268 2.268 2.268 0 0 0 2.268-2.268v-2.328c.418.193.874.3 1.347.3a3.248 3.248 0 0 0 .3-6.484z"/></svg>
+        <span>HubSpot</span>
+      </span>
+      <span class="integration-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>Stripe</span>
+      </span>
+      <span class="integration-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF4F00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <span>Zapier</span>
+      </span>
+      <span class="integration-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F22F46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Twilio</span>
+      </span>
+      <span class="integration-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+        <span>OpenAI</span>
+      </span>
+      <span class="integration-pill">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="#4A154B" xmlns="http://www.w3.org/2000/svg"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/></svg>
+        <span>Slack</span>
+      </span>
+      <span class="integration-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Calendly</span>
+      </span>
+      <span class="integration-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#96BF48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span>Shopify</span>
+      </span>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="features" id="services">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="claw-accent">&rang;</span> What We Do
+      </h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <span class="feature-tag">Design + Build</span>
+        <h3 class="feature-title">Web Design & Development</h3>
+        <p class="feature-desc">Beautiful, conversion-focused websites built fast. Mobile-first, SEO-ready, and designed to turn visitors into customers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <span class="feature-tag">Brand Identity</span>
+        <h3 class="feature-title">Graphic Design</h3>
+        <p class="feature-desc">Logos, brand kits, social graphics, and ad creatives that make your business look professional and memorable.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <span class="feature-tag">Autopilot Campaigns</span>
+        <h3 class="feature-title">AI-Driven Marketing</h3>
+        <p class="feature-desc">Automated email campaigns, social ads, SEO, and retargeting &mdash; all powered by AI to target the right customers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <span class="feature-tag">Smart Scheduling</span>
+        <h3 class="feature-title">Calendar Integration</h3>
+        <p class="feature-desc">Smart booking that syncs with Google, Outlook, and your team. Clients self-schedule, reminders go out automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span class="feature-tag">Lead Management</span>
+        <h3 class="feature-title">CRM Buildout</h3>
+        <p class="feature-desc">Custom CRM built around how you sell &mdash; track leads, manage pipelines, automate follow-ups.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <span class="feature-tag">24/7 Coverage</span>
+        <h3 class="feature-title">AI Voice Agent</h3>
+        <p class="feature-desc">Always-on AI receptionist that answers calls, qualifies leads, books appointments, and handles FAQs 24/7.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="results">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="claw-accent">&rang;</span> Real Results
+      </h2>
+    </div>
+    <div class="testimonials-track">
+      <div class="testimonials-row" style="--duration: 40s">
+        <!-- Card 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">&#9889;</div>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">"Velosify's AI voice agent paid for itself in the first week. Was missing calls 9pm&ndash;7am; now every one gets answered and booked."</p>
+            <span class="testimonial-author">Mike Gaines</span>
+            <div class="testimonial-role">Owner, Peak Roofing Co.</div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">&#128640;</div>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">"Went from clunky spreadsheet to fully automated pipeline in under a week. Revenue up 40% since switching."</p>
+            <span class="testimonial-author">Jennifer Larson</span>
+            <div class="testimonial-role">Founder, Luxe Salon Studio</div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">&#127775;</div>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">"Website looks better than competitors 10x our size. Combined with marketing automation, tripled inbound leads in 60 days."</p>
+            <span class="testimonial-author">Ryan Chen</span>
+            <div class="testimonial-role">CEO, BlueSky HVAC</div>
+          </div>
+        </div>
+        <!-- Duplicates for infinite scroll -->
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">&#9889;</div>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">"Velosify's AI voice agent paid for itself in the first week. Was missing calls 9pm&ndash;7am; now every one gets answered and booked."</p>
+            <span class="testimonial-author">Mike Gaines</span>
+            <div class="testimonial-role">Owner, Peak Roofing Co.</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">&#128640;</div>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">"Went from clunky spreadsheet to fully automated pipeline in under a week. Revenue up 40% since switching."</p>
+            <span class="testimonial-author">Jennifer Larson</span>
+            <div class="testimonial-role">Founder, Luxe Salon Studio</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">&#127775;</div>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">"Website looks better than competitors 10x our size. Combined with marketing automation, tripled inbound leads in 60 days."</p>
+            <span class="testimonial-author">Ryan Chen</span>
+            <div class="testimonial-role">CEO, BlueSky HVAC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS HIGHLIGHTS -->
+  <section class="builds-section">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="claw-accent">&rang;</span> By The Numbers
+      </h2>
+    </div>
+    <div class="builds-grid">
+      <div class="build-card">
+        <div class="build-card-header">
+          <span class="build-source">Voice Agent</span>
+          <span class="build-stat">Peak Roofing Co.</span>
+        </div>
+        <h3 class="build-title">100% of After-Hours Calls Answered & Booked</h3>
+        <p class="build-summary">AI voice agent captures every call from 9pm&ndash;7am, qualifying leads and booking appointments automatically. Paid for itself in week one.</p>
+      </div>
+      <div class="build-card">
+        <div class="build-card-header">
+          <span class="build-source">CRM + Automation</span>
+          <span class="build-stat">Luxe Salon Studio</span>
+        </div>
+        <h3 class="build-title">40% Revenue Increase in Under a Week</h3>
+        <p class="build-summary">Replaced spreadsheets with a fully automated pipeline &mdash; from lead capture to follow-up, everything runs on autopilot.</p>
+      </div>
+      <div class="build-card">
+        <div class="build-card-header">
+          <span class="build-source">Web + Marketing</span>
+          <span class="build-stat">BlueSky HVAC</span>
+        </div>
+        <h3 class="build-title">3x Inbound Leads in 60 Days</h3>
+        <p class="build-summary">Professional website combined with AI marketing automation tripled lead flow, outperforming competitors 10x their size.</p>
+      </div>
+      <div class="build-card">
+        <div class="build-card-header">
+          <span class="build-source">Full Stack</span>
+          <span class="build-stat">All Clients</span>
+        </div>
+        <h3 class="build-title">One-Time Setup, Ongoing Autopilot</h3>
+        <p class="build-summary">Every Velosify client gets onboarding, setup, and ongoing support. No monthly subscriptions, no hidden fees &mdash; just results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="claw-accent">&rang;</span> Simple Pricing
+      </h2>
+    </div>
+    <div class="pricing-grid">
+      <!-- Starter -->
+      <div class="pricing-card">
+        <h3 class="pricing-name">Starter</h3>
+        <div class="pricing-price">$2,999</div>
+        <div class="pricing-period">One-time fee</div>
+        <ul class="pricing-features">
+          <li>Graphic design</li>
+          <li>Professional web design</li>
+          <li>Monthly design refresh</li>
+          <li>Onboarding & setup</li>
+          <li>Ongoing support</li>
+        </ul>
+        <a href="#contact" class="pricing-btn">Get Started</a>
+      </div>
+      <!-- Pro -->
+      <div class="pricing-card popular">
+        <span class="pricing-badge">Most Popular</span>
+        <h3 class="pricing-name">Pro</h3>
+        <div class="pricing-price">$3,999</div>
+        <div class="pricing-period">One-time fee</div>
+        <ul class="pricing-features">
+          <li>Everything in Starter</li>
+          <li>CRM buildout</li>
+          <li>Smart calendar integration</li>
+          <li>Pipeline automation</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#contact" class="pricing-btn">Get Started</a>
+      </div>
+      <!-- Enterprise -->
+      <div class="pricing-card">
+        <h3 class="pricing-name">Enterprise</h3>
+        <div class="pricing-price">$4,999</div>
+        <div class="pricing-period">One-time fee</div>
+        <ul class="pricing-features">
+          <li>Everything in Pro</li>
+          <li>Meta ads buildout</li>
+          <li>AI voice agent</li>
+          <li>Advanced automations</li>
+          <li>Dedicated strategist</li>
+        </ul>
+        <a href="#contact" class="pricing-btn">Get Started</a>
+      </div>
+    </div>
+    <p class="pricing-note">All plans are one-time fees. Includes onboarding, setup, and ongoing support.</p>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="contact" id="contact">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="claw-accent">&rang;</span> Get Started
+      </h2>
+    </div>
+    <div class="contact-card">
+      <form class="contact-form" action="#" method="POST">
+        <input type="text" name="_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
+        <div class="form-group">
+          <label class="form-label" for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Business Email</label>
+          <input type="email" id="email" name="email" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" class="form-input">
+        </div>
+        <div class="form-group full-width">
+          <label class="form-label" for="business">Business Name</label>
+          <input type="text" id="business" name="business" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="industry">Industry</label>
+          <select id="industry" name="industry" class="form-select">
+            <option value="">Select...</option>
+            <option>Home Services</option>
+            <option>Health & Wellness</option>
+            <option>Salon / Beauty</option>
+            <option>Legal / Professional Services</option>
+            <option>Real Estate</option>
+            <option>Retail / E-commerce</option>
+            <option>Restaurant / Food & Beverage</option>
+            <option>Fitness / Sports</option>
+            <option>Finance / Accounting</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="plan">Plan Interested In</label>
+          <select id="plan" name="plan" class="form-select">
+            <option value="">Select...</option>
+            <option>Starter ($2,999)</option>
+            <option>Pro ($3,999)</option>
+            <option>Enterprise ($4,999)</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group full-width">
+          <label class="form-label" for="challenge">Biggest Growth Challenge (optional)</label>
+          <textarea id="challenge" name="challenge" class="form-textarea form-input" placeholder="Tell us what's holding your business back..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send My Request</button>
+        <p class="form-note">We'll get back to you within 1 business day. No spam, ever.</p>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <nav class="footer-nav">
+      <a href="privacy.html">Privacy Policy</a>
+      <span class="footer-separator">&middot;</span>
+      <a href="terms.html">Terms of Service</a>
+      <span class="footer-separator">&middot;</span>
+      <a href="cookies.html">Cookie Policy</a>
+    </nav>
+    <p>Vibe coded in a few hours by Nolan Johnson</p>
+    <p>&copy; 2026 Velosify AI, Inc. All rights reserved.</p>
+  </footer>
+
+</main>
+
+<script>
+(() => {
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  const links = menu.querySelectorAll('.mobile-link');
+
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+
+<script>
+(() => {
+  const form = document.querySelector('.contact-form');
+  if (!form) return;
+  const submitBtn = form.querySelector('.form-submit');
+  const WEBHOOK_URL = 'https://crm.velosify.ai/webhook/website/contact';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const originalLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const payload = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      form.innerHTML =
+        '<div class="form-success" style="text-align:center;padding:2rem 1rem;">' +
+          '<h3 style="margin:0 0 0.75rem;">Thanks — we got it.</h3>' +
+          '<p style="margin:0;">Nolan will follow up within 1 business day.</p>' +
+        '</div>';
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+      let note = form.querySelector('.form-error');
+      if (!note) {
+        note = document.createElement('p');
+        note.className = 'form-error';
+        note.style.cssText = 'color:#c33;margin:0.5rem 0 0;text-align:center;';
+        submitBtn.insertAdjacentElement('afterend', note);
+      }
+      note.textContent = 'Sorry — something went wrong. Please email nolan@velosify.ai directly.';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Velosify Cookie Policy — How we use cookies and similar technologies.">
+  <meta property="og:title" content="Cookie Policy — Velosify">
+  <meta property="og:description" content="How Velosify uses cookies and similar tracking technologies.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://velosify.ai/cookies">
+  <meta property="og:image" content="https://velosify.ai/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cookie Policy — Velosify">
+  <meta name="twitter:description" content="How Velosify uses cookies and similar tracking technologies.">
+  <meta name="twitter:image" content="https://velosify.ai/og-image.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%236366f1'/><stop offset='100%25' stop-color='%23a78bfa'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='%23050810'/><path d='M52 20L22 58h24l-4 22 30-38H48l4-22z' fill='url(%23g)'/></svg>" type="image/svg+xml">
+  <title>Cookie Policy — Velosify</title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #050810; --bg-secondary: #0a0f1a; --bg-card: #0d1220;
+      --text-primary: #e8eaf0; --text-secondary: #8b92a5; --text-muted: #5a6178;
+      --accent: #6366f1; --accent-bright: #818cf8; --accent-glow: rgba(99,102,241,0.3);
+      --accent-gradient-start: #6366f1; --accent-gradient-end: #a78bfa;
+      --border-color: rgba(99,102,241,0.15); --border-hover: rgba(99,102,241,0.35);
+      --font-display: 'Clash Display', sans-serif; --font-body: 'Satoshi', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent-bright); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .stars-canvas { position: fixed; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 0; }
+    .nebula { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 50%, rgba(99,102,241,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(167,139,250,0.04) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    .nav-wrapper { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(5,8,16,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 900px; margin: 0 auto; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+    .nav-back { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; text-decoration: none; }
+    .nav-back:hover { color: var(--text-primary); text-decoration: none; }
+    .container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .legal-page { padding-top: 100px; padding-bottom: 80px; }
+    .legal-page h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 8px; background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .legal-date { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 40px; display: block; }
+    .legal-page h2 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin: 36px 0 12px; }
+    .legal-page h2 .accent { color: var(--accent-bright); margin-right: 6px; }
+    .legal-page p, .legal-page ul { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: 16px; }
+    .legal-page ul { padding-left: 20px; }
+    .legal-page li { margin-bottom: 6px; }
+    .cookie-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
+    .cookie-table th, .cookie-table td { text-align: left; padding: 12px 16px; font-size: 0.85rem; border-bottom: 1px solid var(--border-color); }
+    .cookie-table th { color: var(--text-primary); font-weight: 600; font-family: var(--font-display); background: var(--bg-card); }
+    .cookie-table td { color: var(--text-secondary); }
+    .cookie-table tr:hover td { color: var(--text-primary); }
+    .footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); margin-top: 20px; }
+    .footer-nav { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-nav a { color: var(--text-secondary); font-size: 0.85rem; text-decoration: none; }
+    .footer-nav a:hover { color: var(--text-primary); text-decoration: none; }
+    .footer-separator { color: var(--text-muted); }
+    .footer p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; }
+    .footer p a { color: var(--accent-bright); }
+    @media (max-width: 600px) { .cookie-table { font-size: 0.8rem; } .cookie-table th, .cookie-table td { padding: 8px 10px; } }
+  </style>
+</head>
+<body>
+<canvas class="stars-canvas" id="stars-canvas"></canvas>
+<div class="nebula"></div>
+
+<div class="nav-wrapper">
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Velosify</a>
+    <a href="index.html" class="nav-back">&larr; Back to home</a>
+  </nav>
+</div>
+
+<main class="container">
+  <article class="legal-page">
+    <h1>Cookie Policy</h1>
+    <span class="legal-date">Last updated: May 3, 2026</span>
+
+    <p>This Cookie Policy explains how Velosify AI, Inc. ("Velosify," "we," "us," or "our") uses cookies and similar tracking technologies on our marketing website at <strong>velosify.ai</strong> and inside our customer relationship management application at <strong>crm.velosify.ai</strong> (the "CRM").</p>
+
+    <h2><span class="accent">&rang;</span> What Are Cookies?</h2>
+    <p>Cookies are small text files stored on your device when you visit a website. They help websites remember your preferences, understand how you interact with the site, and improve your experience. Cookies can be "session" cookies (deleted when you close your browser) or "persistent" cookies (remain until they expire or you delete them). This policy also covers similar technologies such as <strong>localStorage</strong> and <strong>sessionStorage</strong>, which the CRM uses to remember UI preferences locally in your browser.</p>
+
+    <h2><span class="accent">&rang;</span> Cookies We Use</h2>
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Purpose</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Essential</strong></td>
+          <td>Required for the website and CRM to function. Includes login session cookies (so you stay logged in to the CRM), CSRF protection, and Stripe fraud-detection cookies set during checkout. Disabling these will prevent you from logging in or completing payments.</td>
+          <td>Session and up to 1 year</td>
+        </tr>
+        <tr>
+          <td><strong>Analytics</strong></td>
+          <td>Help us understand how visitors interact with the marketing site by collecting anonymous usage data (pages visited, time on site, referral source).</td>
+          <td>Up to 2 years</td>
+        </tr>
+        <tr>
+          <td><strong>Functional</strong></td>
+          <td>Remember your preferences (e.g. column widths, sidebar state, last-used Lead Generator tier inside the CRM, or form pre-fill data on the marketing site) to provide a more personalized experience. The CRM uses browser localStorage for most of these.</td>
+          <td>Up to 1 year</td>
+        </tr>
+        <tr>
+          <td><strong>Marketing</strong></td>
+          <td>Used on the marketing site only (velosify.ai) to deliver relevant advertisements and measure the effectiveness of marketing campaigns across platforms. We do not run marketing or advertising cookies inside the CRM.</td>
+          <td>Up to 2 years</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2><span class="accent">&rang;</span> Third-Party Cookies</h2>
+    <p>The following third-party services set their own cookies on velosify.ai or on the CRM. Each has its own privacy and cookie policy, which we encourage you to review:</p>
+    <ul>
+      <li><strong>Stripe</strong> (<em>used inside the CRM</em>): payment processing and fraud detection. Stripe sets cookies such as <code>__stripe_mid</code> and <code>__stripe_sid</code> when our pages load Stripe.js or when you complete a payment. See <a href="https://stripe.com/cookies-policy/legal" target="_blank" rel="noopener">Stripe's cookie policy</a>.</li>
+      <li><strong>Google Analytics</strong> (<em>marketing site only</em>): website traffic analysis and usage patterns. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.</li>
+      <li><strong>Meta Pixel</strong> (<em>marketing site only</em>): measuring the effectiveness of advertising campaigns. See <a href="https://www.facebook.com/policies/cookies/" target="_blank" rel="noopener">Meta's cookie policy</a>.</li>
+      <li><strong>Calendly</strong> (<em>marketing site only</em>): embedded scheduling functionality. See <a href="https://calendly.com/legal/cookie-policy" target="_blank" rel="noopener">Calendly's cookie policy</a>.</li>
+      <li><strong>Cloudflare</strong> (<em>both</em>): DNS, content delivery, and bot protection. Cloudflare may set security-related cookies such as <code>__cf_bm</code>. See <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener">Cloudflare's cookie policy</a>.</li>
+    </ul>
+
+    <h2><span class="accent">&rang;</span> Managing Cookies</h2>
+    <p>You can control and manage cookies in several ways:</p>
+    <ul>
+      <li><strong>Browser settings:</strong> Most browsers allow you to block or delete cookies through their settings menu. Note that blocking essential cookies will prevent you from logging into the CRM or completing payments.</li>
+      <li><strong>localStorage:</strong> The CRM stores UI preferences in your browser's localStorage rather than in cookies. You can clear it through your browser's site-data settings (e.g. Chrome: Settings → Privacy and Security → Site settings → View permissions and data stored across sites).</li>
+      <li><strong>Opt-out tools:</strong> You can opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</li>
+      <li><strong>Ad preferences:</strong> Visit <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">Your Ad Choices</a> or <a href="https://youronlinechoices.eu/" target="_blank" rel="noopener">Your Online Choices</a> to manage advertising cookie preferences.</li>
+    </ul>
+
+    <h2><span class="accent">&rang;</span> Do Not Track</h2>
+    <p>Some browsers offer a "Do Not Track" (DNT) signal. Our website currently does not respond to DNT signals, but we respect your right to manage cookies through the methods described above.</p>
+
+    <h2><span class="accent">&rang;</span> Changes to This Policy</h2>
+    <p>We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our business practices. The "Last updated" date at the top of this page indicates when the latest changes were made.</p>
+
+    <h2><span class="accent">&rang;</span> Contact Us</h2>
+    <p>If you have questions about our use of cookies, please contact us at:<br>
+    <a href="mailto:privacy@velosify.ai">privacy@velosify.ai</a></p>
+  </article>
+
+  <footer class="footer">
+    <nav class="footer-nav">
+      <a href="privacy.html">Privacy Policy</a>
+      <span class="footer-separator">&middot;</span>
+      <a href="terms.html">Terms of Service</a>
+      <span class="footer-separator">&middot;</span>
+      <a href="cookies.html">Cookie Policy</a>
+    </nav>
+    <p>&copy; 2026 Velosify AI, Inc. All rights reserved.</p>
+  </footer>
+</main>
+
+<script>
+(() => {
+  const canvas = document.getElementById('stars-canvas');
+  const ctx = canvas.getContext('2d');
+  let stars = []; const COUNT = 80;
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  function init() { resize(); stars = []; for (let i = 0; i < COUNT; i++) { const angle = Math.random()*Math.PI*2; const speed = 0.08+Math.random()*0.25; stars.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: 0.5+Math.random()*1.2, alpha: 0.2+Math.random()*0.6, vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed, twinkleSpeed: 0.003+Math.random()*0.008, twinkleOffset: Math.random()*Math.PI*2 }); } }
+  let t = 0;
+  function draw() { ctx.clearRect(0,0,canvas.width,canvas.height); t++; for (const s of stars) { s.x+=s.vx; s.y+=s.vy; if(s.x<-5)s.x=canvas.width+5; if(s.x>canvas.width+5)s.x=-5; if(s.y<-5)s.y=canvas.height+5; if(s.y>canvas.height+5)s.y=-5; const flicker=s.alpha+Math.sin(t*s.twinkleSpeed+s.twinkleOffset)*0.2; ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${Math.max(0.05,Math.min(1,flicker))})`; ctx.fill(); } requestAnimationFrame(draw); }
+  window.addEventListener('resize', resize); init(); draw();
+})();
+</script>
+</body>
+</html>
